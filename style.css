@@ -99,3 +99,17 @@ h2 {
   text-align: center;
   text-transform: uppercase;
 }
+
+.notice {
+  padding: 15px 20px;
+  position: fixed;
+  bottom: -70px;
+  transition: transform 0.3s ease-in-out;
+  background:rgba(0,0,0,.3);
+  border-radius: 10px 10px 0 0;
+  color: #fff;
+}
+
+.notice.show {
+  transform: translateY(-50px);
+}

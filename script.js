@@ -16,6 +16,15 @@ function showSuccess(input) {
   formControl.className = "form_control success";
 }
 
+const notice = document.querySelector(".notice");
+
+function allRequired() {
+  notice.classList.add("show");
+  setTimeout(() => {
+    notice.classList.remove("show");
+  }, 2000);
+}
+
 const nameValidation = /^[a-z0-9_-]{2,20}$/;
 const emailValidation = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 const pwValidation = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[~,!,@,#,$,*,(,),=,+,_,.,|]).*$/;
@@ -32,7 +41,7 @@ function isValidPw(input) {
   if (pwValidation.test(input.value.trim())) {
     showSuccess(input);
   } else {
-    showError(input, "Password includes number, special character");
+    showError(input, "Password is not valid");
   }
 }
 
@@ -50,7 +59,9 @@ function checkRequired(inputArr) {
       showError(input, `${getFieldName(input)} is required`);
     } else {
       showSuccess(input);
+      allRequired();
     }
+
   });
 }
 
